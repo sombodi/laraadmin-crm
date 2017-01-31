@@ -47,7 +47,7 @@
 
 @la_access("Organizations", "create")
 <div class="modal fade" id="AddModal" role="dialog" aria-labelledby="myModalLabel">
-	<div class="modal-dialog modal-lg" role="document">
+	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -56,38 +56,21 @@
 			{!! Form::open(['action' => 'LA\OrganizationsController@store', 'id' => 'organization-add-form']) !!}
 			<div class="modal-body">
 				<div class="box-body">
-                    <div class="row">
-						<div class="col-md-6">@la_input($module, 'name')</div>
-						<div class="col-md-6">@la_input($module, 'email_primary')</div>
-					</div>
-					<div class="row">
-						<div class="col-md-6">@la_input($module, 'email_secondary')</div>
-						<div class="col-md-6">@la_input($module, 'phone_primary')</div>
-					</div>
-					<div class="row">
-						<div class="col-md-6">@la_input($module, 'phone_secondary')</div>
-						<div class="col-md-6">@la_input($module, 'website')</div>
-					</div>
-					<div class="row">
-						<div class="col-md-6">@la_input($module, 'type')</div>
-						<div class="col-md-6">@la_input($module, 'assigned_to')</div>
-					</div>
-					<div class="row">
-						<div class="col-md-6">@la_input($module, 'connected_since')</div>
-						<div class="col-md-6">@la_input($module, 'address')</div>
-					</div>
-					<div class="row">
-						<div class="col-md-6">@la_input($module, 'country')</div>
-						<div class="col-md-6">@la_input($module, 'city')</div>
-					</div>
-					<div class="row">
-						<div class="col-md-6">@la_input($module, 'postal_code')</div>
-						<div class="col-md-6">@la_input($module, 'description')</div>
-					</div>
-					<div class="row">
-						<div class="col-md-6">@la_input($module, 'profile_image')</div>
-						<div class="col-md-6">@la_input($module, 'profile')</div>
-					</div>
+                    @la_form($module)
+					
+					{{--
+					@la_input($module, 'name')
+					@la_input($module, 'email')
+					@la_input($module, 'phone')
+					@la_input($module, 'website')
+					@la_input($module, 'assigned_to')
+					@la_input($module, 'connected_since')
+					@la_input($module, 'address')
+					@la_input($module, 'city')
+					@la_input($module, 'description')
+					@la_input($module, 'profile_image')
+					@la_input($module, 'profile')
+					--}}
 				</div>
 			</div>
 			<div class="modal-footer">

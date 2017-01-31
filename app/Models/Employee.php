@@ -2,6 +2,9 @@
 /**
  * Model generated using LaraAdmin
  * Help: http://laraadmin.com
+ * LaraAdmin is open-sourced software licensed under the MIT license.
+ * Developed by: Dwij IT Solutions
+ * Developer Website: http://dwijitsolutions.com
  */
 
 namespace App\Models;
@@ -22,44 +25,4 @@ class Employee extends Model
 	protected $guarded = [];
 
 	protected $dates = ['deleted_at'];
-
-	/**
-     * Get the Lead associated with Employee
-     */
-	public function leads()
-	{
-		return $this->hasMany('App\Models\Lead', 'assigned_to', 'id');
-	}
-
-	/**
-     * Get the Opportunities associated with Employee
-     */
-	public function opportunities()
-	{
-		return $this->hasMany('App\Models\Opportunity', 'assigned_to', 'id');
-	}
-
-	/**
-     * Get the Projects associated with Employee
-     */
-	public function projects()
-	{
-		return $this->hasMany('App\Models\Project', 'assigned_to', 'id');
-	}
-
-	/**
-     * Get the Contacts associated with Employee
-     */
-	public function contacts()
-	{
-		return $this->hasMany('App\Models\Contact', 'assigned_to', 'id');
-	}
-
-	/**
-     * Get the Organizations associated with Employee
-     */
-	public function organizations()
-	{
-		return $this->hasMany('App\Models\Organization', 'assigned_to', 'id');
-	}
 }

@@ -96,10 +96,6 @@
 	<ul data-toggle="ajax-tab" class="nav nav-tabs profile" role="tablist">
 		<li class=""><a href="{{ url(config('laraadmin.adminRoute') . '/organizations') }}" data-toggle="tooltip" data-placement="right" title="Back to Organizations"><i class="fa fa-chevron-left"></i></a></li>
 		<li class="active"><a role="tab" data-toggle="tab" class="active" href="#tab-general-info" data-target="#tab-info"><i class="fa fa-bars"></i> General Info</a></li>
-		<li class=""><a role="tab" data-toggle="tab" href="#tab-contacts" data-target="#tab-contacts"><i class="fa {{ Module::get('Contacts')->fa_icon }}"></i> Contacts</a></li>
-		<li class=""><a role="tab" data-toggle="tab" href="#tab-opportunities" data-target="#tab-opportunities"><i class="fa {{ Module::get('Opportunities')->fa_icon }}"></i> Opportunities</a></li>
-		<li class=""><a role="tab" data-toggle="tab" href="#tab-projects" data-target="#tab-projects"><i class="fa {{ Module::get('Projects')->fa_icon }}"></i> Projects</a></li>
-		<li class=""><a role="tab" data-toggle="tab" href="#tab-tickets" data-target="#tab-tickets"><i class="fa {{ Module::get('Tickets')->fa_icon }}"></i> Tickets</a></li>
 		<li class=""><a role="tab" data-toggle="tab" href="#tab-timeline" data-target="#tab-timeline"><i class="fa fa-clock-o"></i> Timeline</a></li>
 	</ul>
 
@@ -111,38 +107,17 @@
 						<h4>General Info</h4>
 					</div>
 					<div class="panel-body">
-						<div class="row">
-						<div class="col-md-6">@la_display($module, 'name')</div>
-						<div class="col-md-6">@la_display($module, 'email_primary')</div>
-					</div>
-					<div class="row">
-						<div class="col-md-6">@la_display($module, 'email_secondary')</div>
-						<div class="col-md-6">@la_display($module, 'phone_primary')</div>
-					</div>
-					<div class="row">
-						<div class="col-md-6">@la_display($module, 'phone_secondary')</div>
-						<div class="col-md-6">@la_display($module, 'website')</div>
-					</div>
-					<div class="row">
-						<div class="col-md-6">@la_display($module, 'type')</div>
-						<div class="col-md-6">@la_display($module, 'assigned_to')</div>
-					</div>
-					<div class="row">
-						<div class="col-md-6">@la_display($module, 'connected_since')</div>
-						<div class="col-md-6">@la_display($module, 'address')</div>
-					</div>
-					<div class="row">
-						<div class="col-md-6">@la_display($module, 'country')</div>
-						<div class="col-md-6">@la_display($module, 'city')</div>
-					</div>
-					<div class="row">
-						<div class="col-md-6">@la_display($module, 'postal_code')</div>
-						<div class="col-md-6">@la_display($module, 'description')</div>
-					</div>
-					<div class="row">
-						<div class="col-md-6">@la_display($module, 'profile_image')</div>
-						<div class="col-md-6">@la_display($module, 'profile')</div>
-					</div>
+						@la_display($module, 'name')
+						@la_display($module, 'email')
+						@la_display($module, 'phone')
+						@la_display($module, 'website')
+						@la_display($module, 'assigned_to')
+						@la_display($module, 'connected_since')
+						@la_display($module, 'address')
+						@la_display($module, 'city')
+						@la_display($module, 'description')
+						@la_display($module, 'profile_image')
+						@la_display($module, 'profile')
 					</div>
 				</div>
 			</div>
@@ -241,205 +216,9 @@
 			</ul>
 			<!--<div class="text-center p30"><i class="fa fa-list-alt" style="font-size: 100px;"></i> <br> No posts to show</div>-->
 		</div>
-
-		<div role="tabpanel" class="tab-pane fade" id="tab-contacts">
-			<div class="tab-content">
-				<div class="panel">
-					<div class="panel-default panel-heading">
-						<h4>Contacts assigned to {{ $organization->name }}</h4>
-					</div>
-					<div class="panel-body p20">
-						<table id="dt-organization-contacts" class="table table-bordered" style="width:100%;">
-							<thead>
-								<?php
-								$listing_cols = Module::getListingColumns('Contacts', true);
-								?>
-								<tr class="success">
-									@foreach( $listing_cols as $col )
-										<th>{{ $col['label'] }}</th>
-									@endforeach
-									<th>Actions</th>
-								</tr>
-							</thead>
-							<tbody>
-								
-							</tbody>
-						</table>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div role="tabpanel" class="tab-pane fade" id="tab-opportunities">
-			<div class="tab-content">
-				<div class="panel">
-					<div class="panel-default panel-heading">
-						<h4>Opportunities assigned to {{ $organization->name }}</h4>
-					</div>
-					<div class="panel-body p20">
-						<table id="dt-organization-opportunities" class="table table-bordered" style="width:100%;">
-							<thead>
-								<?php
-								$listing_cols = Module::getListingColumns('Opportunities', true);
-								?>
-								<tr class="success">
-									@foreach( $listing_cols as $col )
-										<th>{{ $col['label'] }}</th>
-									@endforeach
-									<th>Actions</th>
-								</tr>
-							</thead>
-							<tbody>
-								
-							</tbody>
-						</table>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div role="tabpanel" class="tab-pane fade" id="tab-projects">
-			<div class="tab-content">
-				<div class="panel">
-					<div class="panel-default panel-heading">
-						<h4>Projects assigned to {{ $organization->name }}</h4>
-					</div>
-					<div class="panel-body p20">
-						<table id="dt-organization-projects" class="table table-bordered" style="width:100%;">
-							<thead>
-								<?php
-								$listing_cols = Module::getListingColumns('Projects', true);
-								?>
-								<tr class="success">
-									@foreach( $listing_cols as $col )
-										<th>{{ $col['label'] }}</th>
-									@endforeach
-									<th>Actions</th>
-								</tr>
-							</thead>
-							<tbody>
-								
-							</tbody>
-						</table>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div role="tabpanel" class="tab-pane fade" id="tab-tickets">
-			<div class="tab-content">
-				<div class="panel">
-					<div class="panel-default panel-heading">
-						<h4>Tickets assigned to {{ $organization->name }}</h4>
-					</div>
-					<div class="panel-body p20">
-						<table id="dt-organization-tickets" class="table table-bordered" style="width:100%;">
-							<thead>
-								<?php
-								$listing_cols = Module::getListingColumns('Tickets', true);
-								?>
-								<tr class="success">
-									@foreach( $listing_cols as $col )
-										<th>{{ $col['label'] }}</th>
-									@endforeach
-									<th>Actions</th>
-								</tr>
-							</thead>
-							<tbody>
-								
-							</tbody>
-						</table>
-					</div>
-				</div>
-			</div>
-		</div>
 		
 	</div>
 	</div>
 	</div>
 </div>
 @endsection
-
-@push('styles')
-<link rel="stylesheet" type="text/css" href="{{ asset('la-assets/plugins/datatables/datatables.min.css') }}"/>
-@endpush
-
-@push('scripts')
-<script src="{{ asset('la-assets/plugins/datatables/datatables.min.js') }}"></script>
-<script>
-$(function () {
-	var dt_employee_contacts = $("#dt-organization-contacts").DataTable({
-		processing: true,
-		serverSide: true,
-		ajax: {
-			"url": "{{ url(config('laraadmin.adminRoute') . '/contact_dt_ajax') }}",
-			"data": function ( data_custom ) {
-				data_custom.filter_column = "organization";
-				data_custom.filter_column_value = "{{ $organization->id }}";
-			}
-		},
-		language: {
-			lengthMenu: "_MENU_",
-			search: "_INPUT_",
-			searchPlaceholder: "Search"
-		},
-		columnDefs: [ { orderable: false, targets: [-1] }]
-	});
-
-	var dt_employee_opportunities = $("#dt-organization-opportunities").DataTable({
-		processing: true,
-		serverSide: true,
-		ajax: {
-			"url": "{{ url(config('laraadmin.adminRoute') . '/opportunity_dt_ajax') }}",
-			"data": function ( data_custom ) {
-				data_custom.filter_column = "organization";
-				data_custom.filter_column_value = "{{ $organization->id }}";
-			}
-		},
-		language: {
-			lengthMenu: "_MENU_",
-			search: "_INPUT_",
-			searchPlaceholder: "Search"
-		},
-		columnDefs: [ { orderable: false, targets: [-1] }]
-	});
-
-	var dt_employee_projects = $("#dt-organization-projects").DataTable({
-		processing: true,
-		serverSide: true,
-		ajax: {
-			"url": "{{ url(config('laraadmin.adminRoute') . '/project_dt_ajax') }}",
-			"data": function ( data_custom ) {
-				data_custom.filter_column = "organization";
-				data_custom.filter_column_value = "{{ $organization->id }}";
-			}
-		},
-		language: {
-			lengthMenu: "_MENU_",
-			search: "_INPUT_",
-			searchPlaceholder: "Search"
-		},
-		columnDefs: [ { orderable: false, targets: [-1] }]
-	});
-
-	var dt_employee_tickets = $("#dt-organization-tickets").DataTable({
-		processing: true,
-		serverSide: true,
-		ajax: {
-			"url": "{{ url(config('laraadmin.adminRoute') . '/ticket_dt_ajax') }}",
-			"data": function ( data_custom ) {
-				data_custom.filter_column = "organization";
-				data_custom.filter_column_value = "{{ $organization->id }}";
-			}
-		},
-		language: {
-			lengthMenu: "_MENU_",
-			search: "_INPUT_",
-			searchPlaceholder: "Search"
-		},
-		columnDefs: [ { orderable: false, targets: [-1] }]
-	});
-});
-</script>
-@endpush
-

@@ -2,6 +2,9 @@
 /**
  * Controller generated using LaraAdmin
  * Help: http://laraadmin.com
+ * LaraAdmin is open-sourced software licensed under the MIT license.
+ * Developed by: Dwij IT Solutions
+ * Developer Website: http://dwijitsolutions.com
  */
 
 namespace App\Http\Controllers\LA;
@@ -73,10 +76,6 @@ class OrganizationsController extends Controller
 			
 			$insert_id = Module::insert("Organizations", $request);
 			
-			// add to ElasticSearch index
-			// $organization = Organization::find($insert_id);
-			// $organization->addToIndex();
-
 			return redirect()->route(config('laraadmin.adminRoute') . '.organizations.index');
 			
 		} else {
@@ -167,9 +166,6 @@ class OrganizationsController extends Controller
 			
 			$insert_id = Module::updateRow("Organizations", $request, $id);
 			
-			// reindex an entire model
-			// Organization::reindex();
-
 			return redirect()->route(config('laraadmin.adminRoute') . '.organizations.index');
 			
 		} else {
@@ -188,9 +184,6 @@ class OrganizationsController extends Controller
 		if(Module::hasAccess("Organizations", "delete")) {
 			Organization::find($id)->delete();
 			
-			// reindex an entire model
-			// Organization::reindex();
-
 			// Redirecting to index() method
 			return redirect()->route(config('laraadmin.adminRoute') . '.organizations.index');
 		} else {
@@ -208,11 +201,7 @@ class OrganizationsController extends Controller
 		$module = Module::get('Organizations');
 		$listing_cols = Module::getListingColumns('Organizations');
 
-		if(isset($request->filter_column)) {
-			$values = DB::table('organizations')->select($listing_cols)->whereNull('deleted_at')->where($request->filter_column, $request->filter_column_value);
-		} else {
-			$values = DB::table('organizations')->select($listing_cols)->whereNull('deleted_at');
-		}
+		$values = DB::table('organizations')->select($listing_cols)->whereNull('deleted_at');
 		$out = Datatables::of($values)->make();
 		$data = $out->getData();
 

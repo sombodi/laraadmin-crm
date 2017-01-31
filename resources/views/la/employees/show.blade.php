@@ -29,7 +29,6 @@
 			<div class="dats1"><i class="fa fa-clock-o"></i> Joined on {{ date("M d, Y", strtotime($employee->date_hire)) }}</div>
 		</div>
 		<div class="col-md-4">
-		<!--
 			<div class="teamview">
 				<a class="face" data-toggle="tooltip" data-placement="top" title="John Doe"><img src="{{ asset('la-assets/img/user1-128x128.jpg') }}" alt=""><i class="status-online"></i></a>
 				<a class="face" data-toggle="tooltip" data-placement="top" title="John Doe"><img src="{{ asset('la-assets/img/user2-160x160.jpg') }}" alt=""></a>
@@ -43,7 +42,6 @@
 				<a class="face" data-toggle="tooltip" data-placement="top" title="John Doe"><img src="{{ asset('la-assets/img/user6-128x128.jpg') }}" alt=""><i class="status-online"></i></a>
 				<a class="face" data-toggle="tooltip" data-placement="top" title="John Doe"><img src="{{ asset('la-assets/img/user7-128x128.jpg') }}" alt=""></a>
 			</div>
-		-->
 			
 		</div>
 		<div class="col-md-1 actions">
@@ -63,12 +61,6 @@
 		<li class=""><a href="{{ url(config('laraadmin.adminRoute') . '/employees') }}" data-toggle="tooltip" data-placement="right" title="Back to Employees"><i class="fa fa-chevron-left"></i></a></li>
 		<li class="active"><a role="tab" data-toggle="tab" class="active" href="#tab-info" data-target="#tab-info"><i class="fa fa-bars"></i> General Info</a></li>
 		<li class=""><a role="tab" data-toggle="tab" href="#tab-timeline" data-target="#tab-timeline"><i class="fa fa-clock-o"></i> Timeline</a></li>
-		<li class=""><a role="tab" data-toggle="tab" href="#tab-organizations" data-target="#tab-organizations"><i class="fa {{ Module::get('Tickets')->fa_icon }}"></i> Organizations</a></li>
-		<li class=""><a role="tab" data-toggle="tab" href="#tab-contacts" data-target="#tab-contacts"><i class="fa {{ Module::get('Contacts')->fa_icon }}"></i> Contacts</a></li>
-		<li class=""><a role="tab" data-toggle="tab" href="#tab-leads" data-target="#tab-leads"><i class="fa {{ Module::get('Leads')->fa_icon }}"></i> Leads</a></li>
-		<li class=""><a role="tab" data-toggle="tab" href="#tab-opportunities" data-target="#tab-opportunities"><i class="fa {{ Module::get('Opportunities')->fa_icon }}"></i> Opportunities</a></li>
-		<li class=""><a role="tab" data-toggle="tab" href="#tab-projects" data-target="#tab-projects"><i class="fa {{ Module::get('Projects')->fa_icon }}"></i> Projects</a></li>
-		<li class=""><a role="tab" data-toggle="tab" href="#tab-tickets" data-target="#tab-tickets"><i class="fa {{ Module::get('Tickets')->fa_icon }}"></i> Tickets</a></li>
 		@if($employee->id == Auth::user()->id || Entrust::hasRole("SUPER_ADMIN"))
 			<li class=""><a role="tab" data-toggle="tab" href="#tab-account-settings" data-target="#tab-account-settings"><i class="fa fa-key"></i> Account settings</a></li>
 		@endif
@@ -82,34 +74,20 @@
 						<h4>General Info</h4>
 					</div>
 					<div class="panel-body">
-						<div class="row">
-							<div class="col-md-6">@la_display($module, 'name')</div>
-							<div class="col-md-6">@la_display($module, 'designation')</div>
-						</div>
-						<div class="row">
-							<div class="col-md-6">@la_display($module, 'gender')</div>
-							<div class="col-md-6">@la_display($module, 'phone_primary')</div>
-						</div>
-						<div class="row">
-							<div class="col-md-6">@la_display($module, 'phone_secondary')</div>
-							<div class="col-md-6">@la_display($module, 'email')</div>
-						</div>
-						<div class="row">
-							<div class="col-md-6">@la_display($module, 'dept')</div>
-							<div class="col-md-6">@la_display($module, 'city')</div>
-						</div>
-						<div class="row">
-							<div class="col-md-6">@la_display($module, 'address')</div>
-							<div class="col-md-6">@la_display($module, 'about')</div>
-						</div>
-						<div class="row">
-							<div class="col-md-6">@la_display($module, 'date_birth')</div>
-							<div class="col-md-6">@la_display($module, 'date_hire')</div>
-						</div>
-						<div class="row">
-							<div class="col-md-6">@la_display($module, 'date_left')</div>
-							<div class="col-md-6">@la_display($module, 'salary_cur')</div>
-						</div>
+						@la_display($module, 'name')
+						@la_display($module, 'designation')
+						@la_display($module, 'gender')
+						@la_display($module, 'mobile')
+						@la_display($module, 'mobile2')
+						@la_display($module, 'email')
+						@la_display($module, 'dept')
+						@la_display($module, 'city')
+						@la_display($module, 'address')
+						@la_display($module, 'about')
+						@la_display($module, 'date_birth')
+						@la_display($module, 'date_hire')
+						@la_display($module, 'date_left')
+						@la_display($module, 'salary_cur')
 					</div>
 				</div>
 			</div>
@@ -208,174 +186,6 @@
 			</ul>
 			<!--<div class="text-center p30"><i class="fa fa-list-alt" style="font-size: 100px;"></i> <br> No posts to show</div>-->
 		</div>
-
-		<div role="tabpanel" class="tab-pane fade" id="tab-organizations">
-			<div class="tab-content">
-				<div class="panel">
-					<div class="panel-default panel-heading">
-						<h4>Organizations assigned to {{ $employee->name }}</h4>
-					</div>
-					<div class="panel-body p20">
-						<table id="dt-employee-organizations" class="table table-bordered" style="width:100%;">
-							<thead>
-								<?php
-								$listing_cols = Module::getListingColumns('Organizations', true);
-								?>
-								<tr class="success">
-									@foreach( $listing_cols as $col )
-										<th>{{ $col['label'] }}</th>
-									@endforeach
-									<th>Actions</th>
-								</tr>
-							</thead>
-							<tbody>
-								
-							</tbody>
-						</table>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div role="tabpanel" class="tab-pane fade" id="tab-contacts">
-			<div class="tab-content">
-				<div class="panel">
-					<div class="panel-default panel-heading">
-						<h4>Contacts assigned to {{ $employee->name }}</h4>
-					</div>
-					<div class="panel-body p20">
-						<table id="dt-employee-contacts" class="table table-bordered" style="width:100%;">
-							<thead>
-								<?php
-								$listing_cols = Module::getListingColumns('Contacts', true);
-								?>
-								<tr class="success">
-									@foreach( $listing_cols as $col )
-										<th>{{ $col['label'] }}</th>
-									@endforeach
-									<th>Actions</th>
-								</tr>
-							</thead>
-							<tbody>
-								
-							</tbody>
-						</table>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div role="tabpanel" class="tab-pane fade" id="tab-leads">
-			<div class="tab-content">
-				<div class="panel">
-					<div class="panel-default panel-heading">
-						<h4>Leads assigned to {{ $employee->name }}</h4>
-					</div>
-					<div class="panel-body p20">
-						<table id="dt-employee-leads" class="table table-bordered" style="width:100%;">
-							<thead>
-								<?php
-								$listing_cols = Module::getListingColumns('Leads', true);
-								?>
-								<tr class="success">
-									@foreach( $listing_cols as $col )
-										<th>{{ $col['label'] }}</th>
-									@endforeach
-									<th>Actions</th>
-								</tr>
-							</thead>
-							<tbody>
-								
-							</tbody>
-						</table>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div role="tabpanel" class="tab-pane fade" id="tab-projects">
-			<div class="tab-content">
-				<div class="panel">
-					<div class="panel-default panel-heading">
-						<h4>Projects assigned to {{ $employee->name }}</h4>
-					</div>
-					<div class="panel-body p20">
-						<table id="dt-employee-projects" class="table table-bordered" style="width:100%;">
-							<thead>
-								<?php
-								$listing_cols = Module::getListingColumns('Projects', true);
-								?>
-								<tr class="success">
-									@foreach( $listing_cols as $col )
-										<th>{{ $col['label'] }}</th>
-									@endforeach
-									<th>Actions</th>
-								</tr>
-							</thead>
-							<tbody>
-								
-							</tbody>
-						</table>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div role="tabpanel" class="tab-pane fade" id="tab-tickets">
-			<div class="tab-content">
-				<div class="panel">
-					<div class="panel-default panel-heading">
-						<h4>Tickets assigned to {{ $employee->name }}</h4>
-					</div>
-					<div class="panel-body p20">
-						<table id="dt-employee-tickets" class="table table-bordered" style="width:100%;">
-							<thead>
-								<?php
-								$listing_cols = Module::getListingColumns('Tickets', true);
-								?>
-								<tr class="success">
-									@foreach( $listing_cols as $col )
-										<th>{{ $col['label'] }}</th>
-									@endforeach
-									<th>Actions</th>
-								</tr>
-							</thead>
-							<tbody>
-								
-							</tbody>
-						</table>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div role="tabpanel" class="tab-pane fade" id="tab-opportunities">
-			<div class="tab-content">
-				<div class="panel">
-					<div class="panel-default panel-heading">
-						<h4>Opportunities assigned to {{ $employee->name }}</h4>
-					</div>
-					<div class="panel-body p20">
-						<table id="dt-employee-opportunities" class="table table-bordered" style="width:100%;">
-							<thead>
-								<?php
-								$listing_cols = Module::getListingColumns('Opportunities', true);
-								?>
-								<tr class="success">
-									@foreach( $listing_cols as $col )
-										<th>{{ $col['label'] }}</th>
-									@endforeach
-									<th>Actions</th>
-								</tr>
-							</thead>
-							<tbody>
-								
-							</tbody>
-						</table>
-					</div>
-				</div>
-			</div>
-		</div>
 		
 		@if($employee->id == Auth::user()->id || Entrust::hasRole("SUPER_ADMIN"))
 		<div role="tabpanel" class="tab-pane fade" id="tab-account-settings">
@@ -426,12 +236,7 @@
 </div>
 @endsection
 
-@push('styles')
-<link rel="stylesheet" type="text/css" href="{{ asset('la-assets/plugins/datatables/datatables.min.css') }}"/>
-@endpush
-
 @push('scripts')
-<script src="{{ asset('la-assets/plugins/datatables/datatables.min.js') }}"></script>
 <script>
 $(function () {
 	@if($employee->id == Auth::user()->id || Entrust::hasRole("SUPER_ADMIN"))
@@ -439,114 +244,6 @@ $(function () {
 		
 	});
 	@endif
-
-	var dt_employee_organizations = $("#dt-employee-organizations").DataTable({
-		processing: true,
-		serverSide: true,
-		ajax: {
-			"url": "{{ url(config('laraadmin.adminRoute') . '/organization_dt_ajax') }}",
-			"data": function ( data_custom ) {
-				data_custom.filter_column = "assigned_to";
-				data_custom.filter_column_value = "{{ $employee->id }}";
-			}
-		},
-		language: {
-			lengthMenu: "_MENU_",
-			search: "_INPUT_",
-			searchPlaceholder: "Search"
-		},
-		columnDefs: [ { orderable: false, targets: [-1] }]
-	});
-
-	var dt_employee_contacts = $("#dt-employee-contacts").DataTable({
-		processing: true,
-		serverSide: true,
-		ajax: {
-			"url": "{{ url(config('laraadmin.adminRoute') . '/contact_dt_ajax') }}",
-			"data": function ( data_custom ) {
-				data_custom.filter_column = "assigned_to";
-				data_custom.filter_column_value = "{{ $employee->id }}";
-			}
-		},
-		language: {
-			lengthMenu: "_MENU_",
-			search: "_INPUT_",
-			searchPlaceholder: "Search"
-		},
-		columnDefs: [ { orderable: false, targets: [-1] }]
-	});
-
-	var dt_employee_leads = $("#dt-employee-leads").DataTable({
-		processing: true,
-		serverSide: true,
-		ajax: {
-			"url": "{{ url(config('laraadmin.adminRoute') . '/lead_dt_ajax') }}",
-			"data": function ( data_custom ) {
-				data_custom.filter_column = "assigned_to";
-				data_custom.filter_column_value = "{{ $employee->id }}";
-			}
-		},
-		language: {
-			lengthMenu: "_MENU_",
-			search: "_INPUT_",
-			searchPlaceholder: "Search"
-		},
-		columnDefs: [ { orderable: false, targets: [-1] }]
-	});
-
-	var dt_employee_projects = $("#dt-employee-projects").DataTable({
-		processing: true,
-		serverSide: true,
-		ajax: {
-			"url": "{{ url(config('laraadmin.adminRoute') . '/project_dt_ajax') }}",
-			"data": function ( data_custom ) {
-				data_custom.filter_column = "assigned_to";
-				data_custom.filter_column_value = "{{ $employee->id }}";
-			}
-		},
-		language: {
-			lengthMenu: "_MENU_",
-			search: "_INPUT_",
-			searchPlaceholder: "Search"
-		},
-		columnDefs: [ { orderable: false, targets: [-1] }]
-	});
-
-	var dt_employee_tickets = $("#dt-employee-tickets").DataTable({
-		processing: true,
-		serverSide: true,
-		ajax: {
-			"url": "{{ url(config('laraadmin.adminRoute') . '/ticket_dt_ajax') }}",
-			"data": function ( data_custom ) {
-				data_custom.filter_column = "assigned_to";
-				data_custom.filter_column_value = "{{ $employee->id }}";
-			}
-		},
-		language: {
-			lengthMenu: "_MENU_",
-			search: "_INPUT_",
-			searchPlaceholder: "Search"
-		},
-		columnDefs: [ { orderable: false, targets: [-1] }]
-	});
-
-	var dt_employee_opportunities = $("#dt-employee-opportunities").DataTable({
-		processing: true,
-		serverSide: true,
-		ajax: {
-			"url": "{{ url(config('laraadmin.adminRoute') . '/opportunity_dt_ajax') }}",
-			"data": function ( data_custom ) {
-				data_custom.filter_column = "assigned_to";
-				data_custom.filter_column_value = "{{ $employee->id }}";
-			}
-		},
-		language: {
-			lengthMenu: "_MENU_",
-			search: "_INPUT_",
-			searchPlaceholder: "Search"
-		},
-		columnDefs: [ { orderable: false, targets: [-1] }]
-	});
 });
 </script>
 @endpush

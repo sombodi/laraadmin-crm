@@ -2,6 +2,9 @@
 /**
  * Controller generated using LaraAdmin
  * Help: http://laraadmin.com
+ * LaraAdmin is open-sourced software licensed under the MIT license.
+ * Developed by: Dwij IT Solutions
+ * Developer Website: http://dwijitsolutions.com
  */
 
 namespace App\Http\Controllers\LA;
@@ -250,11 +253,7 @@ class EmployeesController extends Controller
 		$module = Module::get('Employees');
 		$listing_cols = Module::getListingColumns('Employees');
 		
-		if(isset($request->filter_column)) {
-			$values = DB::table('employees')->select($listing_cols)->whereNull('deleted_at')->where($request->filter_column, $request->filter_column_value);
-		} else {
-			$values = DB::table('employees')->select($listing_cols)->whereNull('deleted_at');
-		}
+		$values = DB::table('employees')->select($listing_cols)->whereNull('deleted_at');
 		$out = Datatables::of($values)->make();
 		$data = $out->getData();
 
