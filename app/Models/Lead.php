@@ -2,6 +2,9 @@
 /**
  * Model generated using LaraAdmin
  * Help: http://laraadmin.com
+ * LaraAdmin is open-sourced software licensed under the MIT license.
+ * Developed by: Dwij IT Solutions
+ * Developer Website: http://dwijitsolutions.com
  */
 
 namespace App\Models;
@@ -12,22 +15,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Lead extends Model
 {
     use SoftDeletes;
-	
-	protected $table = 'leads';
-	
-	protected $hidden = [
-        
+    
+    protected $table = 'leads';
+    
+    protected $hidden = [
+    
     ];
-
-	protected $guarded = [];
-
-	protected $dates = ['deleted_at'];
-
-	/**
-     * Get the Employee assigned to this Lead
-     */
-    public function assigned_to_emp()
-    {
-        return $this->belongsTo('App\Models\Employee', 'assigned_to', 'id');
-    }
+    
+    protected $guarded = [];
+    
+    protected $dates = ['deleted_at'];
 }

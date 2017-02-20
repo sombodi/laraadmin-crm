@@ -2,6 +2,9 @@
 /**
  * Migration generated using LaraAdmin
  * Help: http://laraadmin.com
+ * LaraAdmin is open-sourced software licensed under the MIT license.
+ * Developed by: Dwij IT Solutions
+ * Developer Website: http://dwijitsolutions.com
  */
 
 use Illuminate\Database\Schema\Blueprint;
@@ -29,66 +32,35 @@ class CreateOrganizationsTable extends Migration
                 "required" => true,
                 "listing_col" => true
             ], [
-                "colname" => "email_primary",
-                "label" => "Primary Email",
-                "field_type" => "Email",
-                "unique" => true,
-                "defaultvalue" => "",
-                "minlength" => 0,
-                "maxlength" => 250,
-                "required" => false,
-                "listing_col" => true
-            ], [
-                "colname" => "email_secondary",
-                "label" => "Secondary Email",
+                "colname" => "email",
+                "label" => "Email",
                 "field_type" => "Email",
                 "unique" => false,
                 "defaultvalue" => "",
                 "minlength" => 0,
                 "maxlength" => 250,
                 "required" => false,
-                "listing_col" => false
+                "listing_col" => true
             ], [
-                "colname" => "phone_primary",
-                "label" => "Primary Phone",
+                "colname" => "phone",
+                "label" => "Phone",
                 "field_type" => "Mobile",
                 "unique" => false,
                 "defaultvalue" => "",
-                "minlength" => 10,
+                "minlength" => 0,
                 "maxlength" => 20,
                 "required" => false,
                 "listing_col" => true
-            ], [
-                "colname" => "phone_secondary",
-                "label" => "Secondary Phone",
-                "field_type" => "Mobile",
-                "unique" => false,
-                "defaultvalue" => "",
-                "minlength" => 10,
-                "maxlength" => 20,
-                "required" => false,
-                "listing_col" => false
             ], [
                 "colname" => "website",
                 "label" => "Website",
                 "field_type" => "URL",
                 "unique" => false,
-                "defaultvalue" => "http://",
+                "defaultvalue" => "",
                 "minlength" => 0,
                 "maxlength" => 250,
                 "required" => false,
                 "listing_col" => true
-            ], [
-                "colname" => "type",
-                "label" => "Type",
-                "field_type" => "Dropdown",
-                "unique" => false,
-                "defaultvalue" => "0",
-                "minlength" => 0,
-                "maxlength" => 0,
-                "required" => false,
-                "listing_col" => true,
-                "popup_vals" => ["Analyst","Competitor","Customer","Integrator","Investor","Partner","Press","Prospect","Reseller","Other"],
             ], [
                 "colname" => "assigned_to",
                 "label" => "Assigned to",
@@ -123,33 +95,13 @@ class CreateOrganizationsTable extends Migration
             ], [
                 "colname" => "city",
                 "label" => "City",
-                "field_type" => "Address",
-                "unique" => false,
-                "defaultvalue" => "",
-                "minlength" => 1,
-                "maxlength" => 50,
-                "required" => true,
-                "listing_col" => true
-            ], [
-                "colname" => "country",
-                "label" => "Country",
-                "field_type" => "Address",
-                "unique" => false,
-                "defaultvalue" => "",
-                "minlength" => 1,
-                "maxlength" => 50,
-                "required" => false,
-                "listing_col" => false
-            ], [
-                "colname" => "postal_code",
-                "label" => "Postal Code",
                 "field_type" => "String",
                 "unique" => false,
                 "defaultvalue" => "",
-                "minlength" => 2,
-                "maxlength" => 10,
-                "required" => false,
-                "listing_col" => false
+                "minlength" => 0,
+                "maxlength" => 250,
+                "required" => true,
+                "listing_col" => true
             ], [
                 "colname" => "description",
                 "label" => "Description",

@@ -2,6 +2,9 @@
 /**
  * Model generated using LaraAdmin
  * Help: http://laraadmin.com
+ * LaraAdmin is open-sourced software licensed under the MIT license.
+ * Developed by: Dwij IT Solutions
+ * Developer Website: http://dwijitsolutions.com
  */
 
 namespace App;
@@ -50,6 +53,6 @@ class User extends Authenticatable implements AuthorizableContract, CanResetPass
      */
     public function uploads()
     {
-        return $this->hasMany('App\Upload');
+        return $this->hasMany('App\Models\Upload');
     }
 }

@@ -1,7 +1,7 @@
 @extends("la.layouts.app")
 
 @section("contentheader_title")
-	<a href="{{ url(config('laraadmin.adminRoute') . '/contacts') }}">Contact</a> :
+    <a href="{{ url(config('laraadmin.adminRoute') . '/contacts') }}">Contact</a> :
 @endsection
 @section("contentheader_description", $contact->$view_col)
 @section("section", "Contacts")
@@ -23,62 +23,46 @@
 @endif
 
 <div class="box">
-	<div class="box-header">
-		
-	</div>
-	<div class="box-body">
-		<div class="row">
-			<div class="col-md-10 col-md-offset-1">
-				{!! Form::model($contact, ['route' => [config('laraadmin.adminRoute') . '.contacts.update', $contact->id ], 'method'=>'PUT', 'id' => 'contact-edit-form']) !!}
-				
-					<div class="row">
-						<div class="col-md-4">@la_input($module, 'designation')</div>
-						<div class="col-md-4">@la_input($module, 'first_name')</div>
-						<div class="col-md-4">@la_input($module, 'last_name')</div>
-					</div>
-					<div class="row">
-						<div class="col-md-6">@la_input($module, 'title')</div>
-						<div class="col-md-6">@la_input($module, 'organization')</div>
-					</div>
-					<div class="row">
-						<div class="col-md-6">@la_input($module, 'phone_primary')</div>
-						<div class="col-md-6">@la_input($module, 'phone_secondary')</div>
-					</div>
-					<div class="row">
-						<div class="col-md-6">@la_input($module, 'home_phone')</div>
-						<div class="col-md-6">@la_input($module, 'lead_source')</div>
-					</div>
-					<div class="row">
-						<div class="col-md-6">@la_input($module, 'department')</div>
-						<div class="col-md-6">@la_input($module, 'email')</div>
-					</div>
-					<div class="row">
-						<div class="col-md-6">@la_input($module, 'email2')</div>
-						<div class="col-md-6">@la_input($module, 'dob')</div>
-					</div>
-					<div class="row">
-						<div class="col-md-6">@la_input($module, 'assistant')</div>
-						<div class="col-md-6">@la_input($module, 'assistant_phone')</div>
-					</div>
-					<div class="row">
-						<div class="col-md-6">@la_input($module, 'assigned_to')</div>
-						<div class="col-md-6">@la_input($module, 'city')</div>
-					</div>
-					<div class="row">
-						<div class="col-md-6">@la_input($module, 'address')</div>
-						<div class="col-md-6">@la_input($module, 'description')</div>
-					</div>
-					<div class="row">
-						<div class="col-md-6">@la_input($module, 'profile_picture')</div>
-					</div>
+    <div class="box-header">
+        
+    </div>
+    <div class="box-body">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                {!! Form::model($contact, ['route' => [config('laraadmin.adminRoute') . '.contacts.update', $contact->id ], 'method'=>'PUT', 'id' => 'contact-edit-form']) !!}
+                    @la_form($module)
+                    
+                    {{--
+                    @la_input($module, 'designation')
+					@la_input($module, 'first_name')
+					@la_input($module, 'last_name')
+					@la_input($module, 'title')
+					@la_input($module, 'organization')
+					@la_input($module, 'phone_primary')
+					@la_input($module, 'email')
+					@la_input($module, 'lead_source')
+					@la_input($module, 'department')
+					@la_input($module, 'phone_secondary')
+					@la_input($module, 'home_phone')
+					@la_input($module, 'email2')
+					@la_input($module, 'dob')
+					@la_input($module, 'assistant')
+					@la_input($module, 'assistant_phone')
+					@la_input($module, 'assigned_to')
+					@la_input($module, 'address')
+					@la_input($module, 'city')
+					@la_input($module, 'country')
+					@la_input($module, 'description')
+					@la_input($module, 'profile_picture')
+                    --}}
                     <br>
-					<div class="form-group">
-						{!! Form::submit( 'Update', ['class'=>'btn btn-success']) !!} <a href="{{ url(config('laraadmin.adminRoute') . '/contacts') }}" class="btn btn-default pull-right">Cancel</a>
-					</div>
-				{!! Form::close() !!}
-			</div>
-		</div>
-	</div>
+                    <div class="form-group">
+                        {!! Form::submit( 'Update', ['class'=>'btn btn-success']) !!} <a href="{{ url(config('laraadmin.adminRoute') . '/contacts') }}" class="btn btn-default pull-right">Cancel</a>
+                    </div>
+                {!! Form::close() !!}
+            </div>
+        </div>
+    </div>
 </div>
 
 @endsection
@@ -86,9 +70,9 @@
 @push('scripts')
 <script>
 $(function () {
-	$("#contact-edit-form").validate({
-		
-	});
+    $("#contact-edit-form").validate({
+        
+    });
 });
 </script>
 @endpush

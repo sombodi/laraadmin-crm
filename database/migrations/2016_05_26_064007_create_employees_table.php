@@ -2,6 +2,9 @@
 /**
  * Migration generated using LaraAdmin
  * Help: http://laraadmin.com
+ * LaraAdmin is open-sourced software licensed under the MIT license.
+ * Developed by: Dwij IT Solutions
+ * Developer Website: http://dwijitsolutions.com
  */
 
 use Illuminate\Database\Schema\Blueprint;
@@ -50,8 +53,8 @@ class CreateEmployeesTable extends Migration
                 "listing_col" => false,
                 "popup_vals" => ["Male","Female"],
             ], [
-                "colname" => "phone_primary",
-                "label" => "Primary Phone",
+                "colname" => "mobile",
+                "label" => "Mobile",
                 "field_type" => "Mobile",
                 "unique" => false,
                 "defaultvalue" => "",
@@ -60,8 +63,8 @@ class CreateEmployeesTable extends Migration
                 "required" => true,
                 "listing_col" => true
             ], [
-                "colname" => "phone_secondary",
-                "label" => "Secondary Phone",
+                "colname" => "mobile2",
+                "label" => "Alternative Mobile",
                 "field_type" => "Mobile",
                 "unique" => false,
                 "defaultvalue" => "",

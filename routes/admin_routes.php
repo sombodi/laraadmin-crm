@@ -71,23 +71,27 @@ Route::group(['as' => $as, 'middleware' => ['auth', 'permission:ADMIN_PANEL']], 
 	Route::post(config('laraadmin.adminRoute') . '/create_backup_ajax', 'LA\BackupsController@create_backup_ajax');
 	Route::get(config('laraadmin.adminRoute') . '/downloadBackup/{id}', 'LA\BackupsController@downloadBackup');
 
-	/* ================== Contacts ================== */
-	Route::resource(config('laraadmin.adminRoute') . '/contacts', 'LA\ContactsController');
-	Route::get(config('laraadmin.adminRoute') . '/contact_dt_ajax', 'LA\ContactsController@dtajax');
+    /* ================== Leads ================== */
+    Route::resource(config('laraadmin.adminRoute') . '/leads', 'LA\LeadsController');
+    Route::get(config('laraadmin.adminRoute') . '/lead_dt_ajax', 'LA\LeadsController@dtajax');
 
-	/* ================== Opportunities ================== */
-	Route::resource(config('laraadmin.adminRoute') . '/opportunities', 'LA\OpportunitiesController');
-	Route::get(config('laraadmin.adminRoute') . '/opportunity_dt_ajax', 'LA\OpportunitiesController@dtajax');
-	
-	/* ================== Leads ================== */
-	Route::resource(config('laraadmin.adminRoute') . '/leads', 'LA\LeadsController');
-	Route::get(config('laraadmin.adminRoute') . '/lead_dt_ajax', 'LA\LeadsController@dtajax');
+    /* ================== Contacts ================== */
+    Route::resource(config('laraadmin.adminRoute') . '/contacts', 'LA\ContactsController');
+    Route::get(config('laraadmin.adminRoute') . '/contact_dt_ajax', 'LA\ContactsController@dtajax');
 
-	/* ================== Projects ================== */
-	Route::resource(config('laraadmin.adminRoute') . '/projects', 'LA\ProjectsController');
-	Route::get(config('laraadmin.adminRoute') . '/project_dt_ajax', 'LA\ProjectsController@dtajax');
+    /* ================== Opportunities ================== */
+    Route::resource(config('laraadmin.adminRoute') . '/opportunities', 'LA\OpportunitiesController');
+    Route::get(config('laraadmin.adminRoute') . '/opportunity_dt_ajax', 'LA\OpportunitiesController@dtajax');
 
-	/* ================== Tickets ================== */
-	Route::resource(config('laraadmin.adminRoute') . '/tickets', 'LA\TicketsController');
-	Route::get(config('laraadmin.adminRoute') . '/ticket_dt_ajax', 'LA\TicketsController@dtajax');
+    /* ================== Projects ================== */
+    Route::resource(config('laraadmin.adminRoute') . '/projects', 'LA\ProjectsController');
+    Route::get(config('laraadmin.adminRoute') . '/project_dt_ajax', 'LA\ProjectsController@dtajax');
+
+    /* ================== Tickets ================== */
+    Route::resource(config('laraadmin.adminRoute') . '/tickets', 'LA\TicketsController');
+    Route::get(config('laraadmin.adminRoute') . '/ticket_dt_ajax', 'LA\TicketsController@dtajax');
+
+    /* ================== Tests ================== */
+    Route::resource(config('laraadmin.adminRoute') . '/tests', 'LA\TestsController');
+    Route::get(config('laraadmin.adminRoute') . '/test_dt_ajax', 'LA\TestsController@dtajax');
 });
