@@ -1,7 +1,7 @@
 <?php
 
 /* ================== Homepage ================== */
-Route::get('/', 'HomeController@index');
+Route::get('/', 'welcome');
 Route::get('/home', 'HomeController@index');
 Route::auth();
 
