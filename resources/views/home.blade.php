@@ -74,7 +74,7 @@
     <div class="container">
         <div class="row centered">
             <div class="col-lg-12">
-                <h1>{{ LAConfigs::getByKey('sitename_part1') }} <b><a>{{ LAConfigs::getByKey('sitename_part2') }}</a></b></h1>
+                <h1>SUP!{{ LAConfigs::getByKey('sitename_part1') }} <b><a>{{ LAConfigs::getByKey('sitename_part2') }}</a></b></h1>
                 <h3>{{ LAConfigs::getByKey('site_description') }}</h3>
                 <h3><a href="{{ url('/login') }}" class="btn btn-lg btn-success">Get Started!</a></h3><br>
             </div>
