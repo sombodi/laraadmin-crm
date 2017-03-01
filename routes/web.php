@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('la.dashboard');
+    return view('welcome');
 });
 
 /* ================== Home page lead Horm  ================== */
