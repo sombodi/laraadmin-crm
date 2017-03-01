@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('la.dashboard');
 });
 
 /* ================== Home page lead Horm  ================== */
@@ -21,18 +21,18 @@ Route::post('store_lead_form_1', 'LA\LeadsController@store_lead_form_1');
 /* ================== Test ElasticSearch ================== */
 
 Route::get('search/{query}', function ($query) {
-	echo "\n<br>Query: ".$query."\n\n<br><br><br>";
+	echo "<br>Query: ".$query."<br><br><br>";
     $orgs = \App\Models\Organization::search($query);
 	if($orgs->totalHits()) {
 		foreach ($orgs as $org) {
-			echo $org->name."(".$org->documentScore().")<br>\n";
+			echo $org->name."(".$org->documentScore().")<br>";
 		}
 	} else {
 		echo "No result";
 	}
-	echo "\n<br>totalHits: ".$orgs->totalHits()."\n<br>";
-	echo "\n<br>maxScore: ".$orgs->maxScore()."\n<br>";
-	echo "\n<br>took: ".$orgs->took()."\n<br>";
+	echo "<br>totalHits: ".$orgs->totalHits()."<br>";
+	echo "<br>maxScore: ".$orgs->maxScore()."<br>";
+	echo "<br>took: ".$orgs->took()."<br>";
 });
 
 /* ================== Homepage + Admin Routes ================== */
